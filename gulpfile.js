@@ -33,7 +33,7 @@ gulp.task('scripts', function() {
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
-      baseDir: 'src'
+      baseDir: './src'
     },
   })
 })
@@ -44,7 +44,7 @@ gulp.task('default', function() {
 });
 
 // Watch Files For Changes and automatically runs the tasks (array in first line runs before everything else)
-gulp.task('watch', ['browserSync'] function() {
+gulp.task('watch', ['browserSync'], function() {
     gulp.watch('src/js/*.js', ['lint', 'scripts']);
     gulp.watch('src/*.html', browserSync.reload);
     gulp.watch('src/css/*.css', browserSync.reload);

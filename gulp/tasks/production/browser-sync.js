@@ -3,7 +3,7 @@ var browsersync = require('browser-sync');
 
 var production = browsersync.create('production');
 
-gulp.task('browsersync:production', ['build:production'], function() {
+gulp.task('browsersync:production', function() {
     production.init({
         server: {
             baseDir: ['./dist']

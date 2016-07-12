@@ -1,16 +1,14 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
-var ngrok = require('ngrok').site
+var ngrok = require('ngrok').site;
+var debug = require('gulp-debug');
 
 gulp.task('build:production', function(callback) {
     runSequence('clean',
-        ['optimize-css',
-        'optimize-html',
-        'optimize-images',
-        'optimize-js'
+        ['optimize-main',
+        'optimize-views',
+        'optimize-images'
         ],
-        //'psi-mobile',
-        //'psi-desktop',
         callback);
-        console.log(ngrok);       
+        //console.log(ngrok);       
 });

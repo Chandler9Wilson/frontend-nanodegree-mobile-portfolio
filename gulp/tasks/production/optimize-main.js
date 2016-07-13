@@ -10,8 +10,8 @@ gulp.task('optimize-main', function () {
     return gulp.src('src/*.html')
         .pipe(useref())
         .pipe(debug({title: 'entry:'}))
-        .pipe(gulpif('*.js', uglify()))
-        .pipe(gulpif('*.css', cssnano()))
+        //.pipe(gulpif('*.js', uglify()))
+        //.pipe(gulpif('*.css', cssnano()))
         //.pipe(gzip())
         .pipe(gulp.dest('dist'))
         .pipe(debug({title: 'exit:'}));

@@ -5,10 +5,9 @@ var debug = require('gulp-debug');
 
 gulp.task('build:production', function(callback) {
     runSequence('clean',
-        ['optimize-main',
+        'optimize-main',
         'optimize-views',
-        'optimize-images'
-        ],
+        'optimize-images',
         callback);
         //console.log(ngrok);       
 });

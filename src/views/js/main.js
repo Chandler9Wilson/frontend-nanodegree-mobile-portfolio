@@ -398,6 +398,32 @@ var pizzaElementGenerator = function(i) {
   return pizzaContainer;
 };
 
+var small = undefined;
+var medium = undefined;
+var large = undefined;
+
+//Calculates and stores the pizza sizes
+var cachePizzaSizes = function(size) {
+    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+
+    switch(size) {
+        case '1':
+            return small;
+        case '2':
+            return medium;
+        case '3':
+            return large;
+        case 'calculate':
+            small = (.25 * windowWidth);
+            medium = (.3333 * windowWidth);
+            large = (.5 * windowWidth);
+            return 'calculationDone';
+        default:
+            console.log('bug in cachePizzaSizes')
+    }
+}
+
+//ToDo add precalculation for pizza sizes and cach the image, then listen for window rezises to recalculate
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
@@ -426,6 +452,10 @@ var resizePizzas = function(size) {
     var oldWidth = elem.offsetWidth;
     var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
+
+    console.log(elem.style.width);
+    console.log(oldSize);
+    console.log(windowWidth);
 
     // Changes the slider value to a percent width
     function sizeSwitcher (size) {
@@ -456,7 +486,15 @@ var resizePizzas = function(size) {
     }
   }
 
-  changePizzaSizes(size);
+  function newChangePizzaSizes(size) {
+      newWidth = cachePizzaSizes(size) + 'px'
+
+      for(var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
+          document.querySelectorAll(".randomPizzaContainer")[i].style.width = newWidth;
+      }
+  }
+
+  newChangePizzaSizes(size);
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
@@ -502,8 +540,10 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+  var cachedScrollTop = document.body.scrollTop;
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = Math.sin((cachedScrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -516,6 +556,12 @@ function updatePositions() {
     logAverageFrame(timesToUpdatePosition);
   }
 }
+
+// calculates the sizes of pizzas when the page loads
+window.onload = cachePizzaSizes('calculate');
+
+// recalculates the sizes of pizzas when the window is resized
+window.onresize = cachePizzaSizes('calculate');
 
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);

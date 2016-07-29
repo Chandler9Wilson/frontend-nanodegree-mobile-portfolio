@@ -11,7 +11,10 @@
         * In the project directory type `$ gulp publish`
 --------------------------
 
-## Optimizations
+## Optimizations made to views/main.js
+* Removed all `document.querySelector()` and replaced with `document.getElementById()`
+* Removed all `document.querySelectorAll()` and replaced with `document.getElementsByClassName()`
+* Added a local storage var to avoid accesing the dom in the for loop
 * Added `cacheScrollTop` to cache a scroll call
     * All credit for this solution goes to [this](https://youtu.be/hAzhayTnhEI?t=728) great google developers talk
 * Added `cachePizzaSizes` to precalculate the pizza sizes
@@ -26,3 +29,4 @@
         * Some outdated references so modify to ngrok and psi current api's
 * Optimization
     * [Helpful Google Developers talk](https://www.youtube.com/watch?v=hAzhayTnhEI)
+    * [Dom access optimization](http://www.phpied.com/dom-access-optimization/)

@@ -3,5 +3,5 @@ var del = require('del');
 
 // Cleans dist by deleting all files in dist
 gulp.task('clean', function() {
-    return del('dist');
+    return del(['dist/**', 'dist/views/**', '!dist', '!dist/img', '!dist/img/**', '!dist/views', '!dist/views/images', '!dist/views/images/**']);
 });

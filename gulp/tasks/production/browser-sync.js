@@ -9,7 +9,7 @@ gulp.task('browsersync:production', function() {
     production.init({
         server: {
             baseDir: ['./dist'],
-            //middleware: [compress()]
+            middleware: [compress()]
         },
         port: 9998
     });

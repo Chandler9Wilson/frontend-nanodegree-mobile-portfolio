@@ -9,6 +9,7 @@
         * In the project directory type `$ gulp`
     * Production Build
         * In the project directory type `$ gulp publish`
+
 --------------------------
 
 ## Optimizations made to views/main.js
@@ -19,6 +20,7 @@
     * All credit for this solution goes to [this](https://youtu.be/hAzhayTnhEI?t=728) great google developers talk
 * Added `cachePizzaSizes` to precalculate the pizza sizes
 * Changed `changePizzaSizes` to use the `cachePizzaSizes` so that the change is not recalculated every pizza
+
 --------------------------
 
 ## Useful and Used Resources

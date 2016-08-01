@@ -7,6 +7,8 @@ gulp.task('build:production', function(callback) {
     runSequence('clean',
         'optimize-main',
         'optimize-views',
+        'critical', //inlines css
+        'optimize-html',
         //'optimize-images',
         callback);
         //console.log(ngrok);       

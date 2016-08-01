@@ -19,6 +19,7 @@
   "devDependencies": {
     "browser-sync": "^2.13.0",
     "compression": "^1.6.2",
+    "critical": "^0.7.3",
     "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",

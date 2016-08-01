@@ -1,4 +1,4 @@
-var gulp = require('gulp')
+var gulp = require('gulp');
 var cssnano = require('gulp-cssnano');
 var uglify = require('gulp-uglify');
 var useref = require('gulp-useref');
